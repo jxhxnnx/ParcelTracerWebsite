@@ -19,7 +19,7 @@ namespace PaPlWebsite.Controllers
         }
 
         [HttpPost]
-        public async Task<string> Index(ReportHop reportHop)
+        public async Task<ActionResult> Index(ReportHop reportHop)
         {
             using (var client = new HttpClient())
             {
@@ -29,7 +29,9 @@ namespace PaPlWebsite.Controllers
                     + "/reportHop/" + reportHop.HopCode,
                     new StringContent(content, Encoding.UTF8, "application/json"));
                 var jsonResult = await response.Content.ReadAsStringAsync();
-                return jsonResult;
+
+                TempData["data"] = reportHop.ParcelId;
+                return RedirectToAction("Index", "ReportResult");
             }
 
         }

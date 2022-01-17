@@ -123,8 +123,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReportArrivalController.cs" />
     <Compile Include="Controllers\ReportHopController.cs" />
+    <Compile Include="Controllers\ReportResultController.cs" />
     <Compile Include="Controllers\SubmitController.cs" />
+    <Compile Include="Controllers\SubmitResultController.cs" />
     <Compile Include="Controllers\TrackController.cs" />
+    <Compile Include="Controllers\TrackResultController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -173,8 +176,10 @@
     <Content Include="Views\Submit\Index.cshtml" />
     <Content Include="Views\ReportHop\Index.cshtml" />
     <Content Include="Views\ReportArrival\Index.cshtml" />
+    <Content Include="Views\TrackResult\Index.cshtml" />
+    <Content Include="Views\SubmitResult\Index.cshtml" />
     <Content Include="Views\Track\Index.cshtml" />
-    <Content Include="Views\Track\Result.cshtml" />
+    <Content Include="Views\ReportResult\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

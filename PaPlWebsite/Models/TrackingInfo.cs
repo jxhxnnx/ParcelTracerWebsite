@@ -19,8 +19,7 @@ namespace PaPlWebsite.Models
     }
     public class TrackingInfo
     {
-        public string TrackingId { get; set; }
-        public string Status { get; set; }
+        public string State { get; set; }
         public List<VisitedHop> VisitedHops { get; set; }
         public List<FutureHop> FutureHops { get; set; }
     }

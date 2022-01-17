@@ -1,0 +1,81 @@
+﻿@model PaPlWebsite.Models.TrackingInfo
+
+@{
+    var data = ViewBag.data;
+}
+
+<div class="card">
+    <div class="card-header" style="background-color: #e8f1f8;">
+        <h4>Tracking Result</h4>
+    </div>
+    <div class="mx-5 my-3 col-md-12 card-body">
+
+        <div class="col-md-12 mb-3 row">
+            <p>Parcel's current state: <b>@data.State</b></p>
+        </div>
+
+        <div class="row">
+            <table class="col-md-9">
+
+                <tr class="mb-1" style="background-color: #e8f1f8;">
+                    <th colspan="3"><i>Visited Stations</i></th>
+                </tr>
+
+                <tr style="background-color: #e8f1f8;">
+                    <th>Station Code</th>
+                    <th>Station Description</th>
+                    <th>Date and time</th>
+                </tr>
+
+                @foreach (var item in data.VisitedHops)
+                {
+                    <tr style="background-color: #f2f6fa;">
+                        <td>
+                            <p>@item.code</p>
+                        </td>
+                        <td>
+                            <p>@item.description</p>
+                        </td>
+                        <td>
+                            <p>@item.dateTime</p>
+                        </td>
+                    </tr>
+                }
+
+
+
+            </table>
+        </div>
+
+        <div class="row mt-3">
+            <table class="col-md-6">
+
+                <tr class="mb-1" style="background-color: #e8f1f8;">
+                    <th colspan="2"><i>Future Stations</i></th>
+                </tr>
+
+                <tr style="background-color: #e8f1f8;">
+                    <th>Station Code</th>
+                    <th>Station Description</th>
+                </tr>
+
+                @foreach (var item in data.FutureHops)
+                {
+                    <tr style="background-color: #f2f6fa;">
+                        <td>
+                            <p>@item.code</p>
+                        </td>
+                        <td>
+                            <p>@item.description</p>
+                        </td>
+                    </tr>
+                }
+
+                
+
+            </table>
+        </div>
+
+    </div>
+</div>
+

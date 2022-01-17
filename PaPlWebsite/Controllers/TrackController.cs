@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace PaPlWebsite.Controllers
 {
@@ -19,17 +20,19 @@ namespace PaPlWebsite.Controllers
         }
 
         [HttpPost]
-        public async Task<string> Index(TrackingId trackingId)
+        public async Task<ActionResult> Index(TrackingId trackingId)
         {
             using (var client = new HttpClient())
             {
-                var content = new StringContent("");
+                //var content = new StringContent("");
 
                 var response = await client.GetAsync("https://papl.azurewebsites.net/parcel/" + trackingId.Id);
                 var jsonResult = await response.Content.ReadAsStringAsync();
-                var model = GetModel(jsonResult);
-                return jsonResult;
-                //return View(model);
+                //var model = GetModel(jsonResult);
+                //return jsonResult;
+
+                TempData["data"] = jsonResult;
+                return RedirectToAction("Index", "TrackResult");
             }
 
         }

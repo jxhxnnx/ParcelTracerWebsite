@@ -27,6 +27,12 @@ namespace PaPlWebsite
             );
 
             routes.MapRoute(
+                name: "TrackResult",
+                url: "trackResult",
+                defaults: new { controller = "TrackResult", action = "Index" }
+            );
+
+            routes.MapRoute(
                 name: "ReportHop",
                 url: "reportHop",
                 defaults: new { controller = "ReportHop", action = "Index" }

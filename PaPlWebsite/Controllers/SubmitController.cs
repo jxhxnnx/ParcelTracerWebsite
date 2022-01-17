@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace PaPlWebsite.Controllers
 {
@@ -20,8 +21,9 @@ namespace PaPlWebsite.Controllers
         }
 
         [HttpPost]
-        public async Task<string> Index(Parcel parcel)
+        public async Task<ActionResult> Index(Parcel parcel)
         {
+
             using (var client = new HttpClient())
             {
                 string content = "{\"weight\":" + parcel.Weight.ToString() +
@@ -39,9 +41,9 @@ namespace PaPlWebsite.Controllers
                 var response = await client.PostAsync("https://papl.azurewebsites.net" + "/parcel",
                     new StringContent(content, Encoding.UTF8, "application/json"));
                 var jsonResult = await response.Content.ReadAsStringAsync();
-                var model = GetModel(jsonResult);
-                return jsonResult;
-                //return View();
+                TempData["data"] = jsonResult;
+                //return jsonResult;
+                return RedirectToAction("Index", "SubmitResult");
             }
                 
         }
